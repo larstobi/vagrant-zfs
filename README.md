@@ -19,15 +19,26 @@ As an example, on a laptop with an OCZ Vertex 3 240GB SSD and an Intel Core i7 @
 
 Usage
 =====
-To use the instant-create functionality, you must first add a box via the plugin. This is done the usual way:
+To use the instant-create functionality, you must use a box that was added using the plugin. This can be done the usual way, either:
 
     vagrant box add base http://files.vagrantup.com/lucid32.box
 
-This operation will create a new ZFS filesystem and mount it at
+or just adding the box_url in the Vagrantfile and just running 'vagrant up'. The 'box add' operation will create a new ZFS filesystem and mount it at
 
     ~/.vagrant.d/boxes/base
 
-and then the box will be unpacked into that directory. To create a new box from this basebox, do it the usual way:
+and then the box will be unpacked into that directory. Do the usual 'vagrant init' and add the box name and optionally the box_url.
+
+    require 'vagrant_zfs'
+    Vagrant::Config.run do |config|
+        config.vm.box = "base"
+        config.vm.box_url = "/Volumes/STORE/boxes/lucid32.box"
+        config.zfs.zpool = 'SSD'
+    end
+
+There is a config option to specify which zpool to use for the filesystem. This is only works when using the 'vagrant up' method.
+
+To create a new box from this basebox, do it the usual way:
 
     vagrant up
 
