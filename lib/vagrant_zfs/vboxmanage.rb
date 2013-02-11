@@ -56,13 +56,14 @@ module VagrantZFS
       uuid_offset = stdout.split(':').first.to_i + 'ddb.uuid.image="'.length
       uuid_length = 36
 
+      # Generate a new UUID
       stdout, stderr, status = Open3.capture3("uuidgen")
       unless status.success? and stderr.empty?
         raise Exception, "gethduuid Error: #{cmd}\n #{stdout}\n #{stderr}\n #{status}"
       end
       new_uuid = stdout.chomp
 
-      # Edit file in place.
+      # Edit the vmdk-file inplace.
       cmd = "echo #{new_uuid} | dd of=#{file} seek=#{uuid_offset} bs=1 count=#{uuid_length} conv=notrunc"
       `#{cmd}` ? new_uuid : nil
     end
