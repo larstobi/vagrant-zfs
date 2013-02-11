@@ -53,10 +53,7 @@ module VagrantZFS
         raise Exception, "gethduuid Error: #{cmd}\n #{stdout}\n #{stderr}\n #{status}"
       end
       # The number before : is the byte offset number.
-      byte_offset = stdout.split(':').first.to_i
-      name_length = 'ddb.uuid.image="'.length
-
-      uuid_offset = byte_offset + name_length
+      uuid_offset = stdout.split(':').first.to_i + 'ddb.uuid.image="'.length
       uuid_length = 36
 
       stdout, stderr, status = Open3.capture3("uuidgen")
