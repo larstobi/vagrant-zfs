@@ -87,11 +87,11 @@ module VagrantZFS
 
       # Did self.sethduuid work?
       unless uuid_pre != uuid_post
-        puts "VBoxManage internalcommands sethduuid did not work. Trying shell with dd"
+        puts "VBoxManage internalcommands sethduuid did not work. Trying other method with dd"
         self.sethduuid_shell hddfile
         uuid_post = self.gethduuid(hddfile)
         unless uuid_pre != uuid_post
-          puts "Did not succeed to sethduuid."
+          puts "Error: Did not succeed to sethduuid."
         end
       end
 

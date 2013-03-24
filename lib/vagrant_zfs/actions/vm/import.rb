@@ -38,10 +38,8 @@ module VagrantZFS
           VagrantZFS::ZFS.clone! "#{fs}@#{instance_name}", clonename
           VagrantZFS::ZFS.set_mountpoint clonename, mountpoint
 
-          hdd = instance_root + "/" + instance_name + "/box-disk1.vmdk"
-
           env[:vm].uuid = VagrantZFS::VBoxManage.createvm instance_name, instance_root
-
+          hdd = instance_root + "/" + instance_name + "/box-disk1.vmdk"
           VagrantZFS::VBoxManage.setup env[:vm].uuid, hdd
 
           # # If we got interrupted, then the import could have been
