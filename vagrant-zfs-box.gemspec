@@ -18,7 +18,6 @@ Gem::Specification.new do |s|
     'lib/vagrant_zfs/actions/vm/destroy.rb',
     'lib/vagrant_zfs/actions/vm/import.rb',
     'lib/vagrant_zfs/vboxmanage.rb',
-    'lib/vagrant_zfs/version.rb',
     'lib/vagrant_zfs/zfs.rb',
     'lib/vagrant_zfs/zfs_config.rb',
     'vagrant-zfs-box.gemspec']

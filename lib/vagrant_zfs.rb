@@ -1,3 +1,7 @@
+module VagrantZFS
+  VERSION = "0.0.2"
+end
+
 require 'vagrant'
 require 'vagrant/action/builder'
 require 'vagrant_zfs/zfs_config'
