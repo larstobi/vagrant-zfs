@@ -7,7 +7,7 @@ require 'vagrant/action/builder'
 require 'vagrant_zfs/zfs_config'
 require 'vagrant_zfs/zfs'
 require 'vagrant_zfs/vboxmanage'
-require 'vagrant_zfs/actions'
+require 'vagrant_zfs/action'
 require 'vagrant_zfs/version'
 
 Vagrant.config_keys.register(:zfs) { ZfsConfig }
