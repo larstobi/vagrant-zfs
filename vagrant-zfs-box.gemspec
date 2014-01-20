@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'vagrant-zfs-box'
-  s.version     = '0.0.3'
+  s.version     = '0.0.4'
   s.date        = '2014-01-20'
   s.summary     = "ZFS plugin for Vagrant 1.0"
   s.description = "ZFS plugin that uses snapshots and clones to speed up box creation for Vagrant 1.0"
