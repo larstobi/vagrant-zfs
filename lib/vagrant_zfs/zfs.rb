@@ -17,7 +17,8 @@ module VagrantZFS
     end
 
     def self.create fs_name, mountpoint
-      cmd = "create -o mountpoint=#{mountpoint} #{fs_name}"
+      zfs_opts="-o atime=off -o compression=lzjb"
+      cmd = "create #{zfs_opts} -o mountpoint=#{mountpoint} #{fs_name}"
       self.exec cmd
     end
 
