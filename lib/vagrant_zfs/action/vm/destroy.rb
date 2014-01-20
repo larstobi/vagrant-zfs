@@ -7,7 +7,23 @@ module VagrantZFS
           @app = app
         end
 
+        def zpool
+          # Is the zpool specified in the Vagrantfile?
+          if @env['global_config'].zfs.zpool
+            @env['global_config'].zfs.zpool
+          else
+            # If we have only one zpool available, go with that.
+            zpools = VagrantZFS::ZFS.zpool_list
+            if zpools.length == 1
+              zpools.first
+            else
+              raise Exception, "zpool not specified and more than one available."
+            end
+          end
+        end
+
         def call(env)
+          @env = env
           env[:ui].info I18n.t("vagrant.actions.vm.destroy.destroying")
 
           cmd = "VBoxManage showvminfo #{env[:vm].uuid}"
@@ -18,7 +34,7 @@ module VagrantZFS
             raise Exception, "Could not find instance name for VM #{env[:vm].uuid}"
           end
 
-          zpool      = 'SSD'
+          puts "ZPOOL: #{zpool}"
           fs         = "#{zpool}/vagrant_#{env[:vm].config.vm.box}"
           clonename    = "#{fs}/#{instance_name}"
           snapname     = "#{fs}@#{instance_name}"
