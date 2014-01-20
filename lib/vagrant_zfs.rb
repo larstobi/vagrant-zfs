@@ -1,5 +1,5 @@
 module VagrantZFS
-  VERSION = "0.0.2"
+  VERSION = "0.0.3"
 end
 
 require 'vagrant'
@@ -8,7 +8,6 @@ require 'vagrant_zfs/zfs_config'
 require 'vagrant_zfs/zfs'
 require 'vagrant_zfs/vboxmanage'
 require 'vagrant_zfs/action'
-require 'vagrant_zfs/version'
 
 Vagrant.config_keys.register(:zfs) { ZfsConfig }
 Vagrant.actions[:box_remove].replace(Vagrant::Action::Box::Destroy, VagrantZFS::Action::Box::Destroy)
