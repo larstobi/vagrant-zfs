@@ -4,6 +4,10 @@ ZFS plugin for Vagrant
 This is a plugin for Vagrant that allows you to instantly create and destroy
 vagrantboxes using the snapshot and clone functionality of the ZFS filesystem.
 
+Compatibility
+=============
+This is currently compatible with Vagrant V1 configurations only. Patches welcome for V2 support.
+
 Why?
 ====
 
